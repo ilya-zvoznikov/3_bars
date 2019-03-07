@@ -7,53 +7,53 @@ def load_data(filepath='https://devman.org/media/filer_public/95/74/957441dc-78d
 
 
 def get_biggest_bar(data=load_data()):
-    dict_of_seatscount = {}
-    for feature in data['features']:
-        dict_of_seatscount[
-            feature['properties']['Attributes']['Name']] = feature['properties']['Attributes']['SeatsCount']
-    biggest_seatscount = max(dict_of_seatscount.values())
-    biggest_bars = {}
-    for key in dict_of_seatscount:
-        if dict_of_seatscount[key] == biggest_seatscount:
-            biggest_bars[key] = dict_of_seatscount[key]
-    return biggest_bars.keys()
+    bars_seatscount_dict = {}
+    for entry in data['features']:
+        bars_seatscount_dict[
+            entry['properties']['Attributes']['Name']] = entry['properties']['Attributes']['SeatsCount']
+    max_seatscount = max(bars_seatscount_dict.values())
+    biggest_bars_dict = {}
+    for key in bars_seatscount_dict:
+        if bars_seatscount_dict[key] == max_seatscount:
+            biggest_bars_dict[key] = bars_seatscount_dict[key]
+    return biggest_bars_dict.keys()
 
 
 def get_smallest_bar(data=load_data()):
-    dict_of_seatscount = {}
-    for feature in data['features']:
-        dict_of_seatscount[
-            feature['properties']['Attributes']['Name']] = feature['properties']['Attributes']['SeatsCount']
-    smallest_seatscount = min(dict_of_seatscount.values())
-    smallest_bars = {}
-    for key in dict_of_seatscount:
-        if dict_of_seatscount[key] == smallest_seatscount:
-            smallest_bars[key] = dict_of_seatscount[key]
-    return smallest_bars.keys()
+    bars_seatscount_dict = {}
+    for entry in data['features']:
+        bars_seatscount_dict[
+            entry['properties']['Attributes']['Name']] = entry['properties']['Attributes']['SeatsCount']
+    min_seatscount = min(bars_seatscount_dict.values())
+    smallest_bars_dict = {}
+    for key in bars_seatscount_dict:
+        if bars_seatscount_dict[key] == min_seatscount:
+            smallest_bars_dict[key] = bars_seatscount_dict[key]
+    return smallest_bars_dict.keys()
 
 
-def get_closest_bar(data=load_data(), longitude=0, latitude=0):
-    dict_of_distance = {}
-    for geo in data['features']:
-        dict_of_distance[geo['properties']['Attributes']['Name']] = sqrt(
-            (latitude - geo['geometry']['coordinates'][0]) ** 2 + (longitude - geo['geometry']['coordinates'][1]) ** 2)
-    min_distance = min(dict_of_distance.values())
-    closest_bars = {}
-    for key in dict_of_distance:
-        if dict_of_distance[key] == min_distance:
-            closest_bars[key] = dict_of_distance[key]
-    return closest_bars.keys()
+def get_closest_bar(data=load_data(), longitude=0.0, latitude=0.0):
+    bars_distance_dict = {}
+    for entry in data['features']:
+        bars_distance_dict[entry['properties']['Attributes']['Name']] = sqrt(
+            (latitude - entry['geometry']['coordinates'][0]) ** 2 + (longitude - entry['geometry']['coordinates'][1]) ** 2)
+    min_distance = min(bars_distance_dict.values())
+    closest_bars_dict = {}
+    for key in bars_distance_dict:
+        if bars_distance_dict[key] == min_distance:
+            closest_bars_dict[key] = bars_distance_dict[key]
+    return closest_bars_dict.keys()
 
 
 if __name__ == '__main__':
-    print('List of biggest bars:')
+    print('Список самых больших баров:')
     print(*get_biggest_bar(), sep=', ', end='\n')
     print()
-    print('List of smallest bars:')
+    print('Список самых маленьких баров:')
     print(*get_smallest_bar(), sep=', ', end='\n')
     print()
-    longitude = float(input('Enter current longitude:\n'))
-    latitude = float(input('Enter current latitude:\n'))
+    latitude = float(input('Введите широту Вашего месторасположения:\n'))
+    longitude = float(input('Введите долготу Вашего месторасположения:\n'))
     print()
-    print('List of closest bars:')
+    print('Список ближайших баров:')
     print(*get_closest_bar(longitude=longitude, latitude=latitude), sep=', ', end='\n')
