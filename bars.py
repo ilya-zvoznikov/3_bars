@@ -6,9 +6,9 @@ def load_data(filepath='https://devman.org/media/filer_public/95/74/957441dc-78d
     return requests.get(filepath).json()
 
 
-def get_biggest_bar(data=load_data()):
+def get_biggest_bar(input_file=load_data()):
     bars_seatscount_dict = {}
-    for entry in data['features']:
+    for entry in input_file['features']:
         bars_seatscount_dict[
             entry['properties']['Attributes']['Name']] = entry['properties']['Attributes']['SeatsCount']
     max_seatscount = max(bars_seatscount_dict.values())
@@ -19,9 +19,9 @@ def get_biggest_bar(data=load_data()):
     return biggest_bars_dict.keys()
 
 
-def get_smallest_bar(data=load_data()):
+def get_smallest_bar(input_file=load_data()):
     bars_seatscount_dict = {}
-    for entry in data['features']:
+    for entry in input_file['features']:
         bars_seatscount_dict[
             entry['properties']['Attributes']['Name']] = entry['properties']['Attributes']['SeatsCount']
     min_seatscount = min(bars_seatscount_dict.values())
@@ -32,9 +32,9 @@ def get_smallest_bar(data=load_data()):
     return smallest_bars_dict.keys()
 
 
-def get_closest_bar(data=load_data(), longitude=0.0, latitude=0.0):
+def get_closest_bar(input_file=load_data(), longitude=0.0, latitude=0.0):
     bars_distance_dict = {}
-    for entry in data['features']:
+    for entry in input_file['features']:
         bars_distance_dict[entry['properties']['Attributes']['Name']] = sqrt(
             (latitude - entry['geometry']['coordinates'][0]) ** 2 + (longitude - entry['geometry']['coordinates'][1]) ** 2)
     min_distance = min(bars_distance_dict.values())
