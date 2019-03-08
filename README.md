@@ -20,215 +20,112 @@
 ```bash
 
 $ python bars.py bars.json  # possibly requires call of python3 executive instead of just python
-Самые большие бары:
-[
-    {
-        "properties": {
-            "DatasetId": 1796,
-            "RowId": "fbe6c340-4707-4d74-b7ca-2b84a23bf3a8",
-            "ReleaseNumber": 2,
-            "VersionNumber": 2,
-            "Attributes": {
-                "AdmArea": "Южный административный округ",
-                "global_id": 169375059,
-                "SeatsCount": 450,
-                "Address": "Автозаводская улица, дом 23, строение 1",
-                "District": "Даниловский район",
-                "IsNetObject": "нет",
-                "SocialPrivileges": "нет",
-                "PublicPhone": [
-                    {
-                        "PublicPhone": "(905) 795-15-84"
-                    }
-                ],
-                "Name": "Спорт бар «Красная машина»",
-                "OperatingCompany": null
-            }
+Самый большой бар:
+{
+    "type": "Feature",
+    "properties": {
+        "RowId": "fbe6c340-4707-4d74-b7ca-2b84a23bf3a8",
+        "VersionNumber": 2,
+        "Attributes": {
+            "global_id": 169375059,
+            "Name": "Спорт бар «Красная машина»",
+            "IsNetObject": "нет",
+            "Address": "Автозаводская улица, дом 23, строение 1",
+            "District": "Даниловский район",
+            "SocialPrivileges": "нет",
+            "OperatingCompany": null,
+            "SeatsCount": 450,
+            "PublicPhone": [
+                {
+                    "PublicPhone": "(905) 795-15-84"
+                }
+            ],
+            "AdmArea": "Южный административный округ"
         },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [
-                37.638228501070095,
-                55.70111462948684
-            ]
-        },
-        "type": "Feature"
+        "ReleaseNumber": 2,
+        "DatasetId": 1796
+    },
+    "geometry": {
+        "coordinates": [
+            37.638228501070095,
+            55.70111462948684
+        ],
+        "type": "Point"
     }
-]
+}
 --------------------------------------------------------------------------------
-Самые маленькие бары:
-[
-    {
-        "properties": {
-            "DatasetId": 1796,
-            "RowId": "17adc22c-5c41-4e4b-872f-815b521f2b53",
-            "ReleaseNumber": 2,
-            "VersionNumber": 2,
-            "Attributes": {
-                "AdmArea": "Северо-Западный административный округ",
-                "global_id": 20675518,
-                "SeatsCount": 0,
-                "Address": "Дубравная улица, дом 34/29",
-                "District": "район Митино",
-                "IsNetObject": "нет",
-                "SocialPrivileges": "нет",
-                "PublicPhone": [
-                    {
-                        "PublicPhone": "(495) 258-94-19"
-                    }
-                ],
-                "Name": "БАР. СОКИ",
-                "OperatingCompany": null
-            }
+Самый маленький бар:
+{
+    "type": "Feature",
+    "properties": {
+        "RowId": "17adc22c-5c41-4e4b-872f-815b521f2b53",
+        "VersionNumber": 2,
+        "Attributes": {
+            "global_id": 20675518,
+            "Name": "БАР. СОКИ",
+            "IsNetObject": "нет",
+            "Address": "Дубравная улица, дом 34/29",
+            "District": "район Митино",
+            "SocialPrivileges": "нет",
+            "OperatingCompany": null,
+            "SeatsCount": 0,
+            "PublicPhone": [
+                {
+                    "PublicPhone": "(495) 258-94-19"
+                }
+            ],
+            "AdmArea": "Северо-Западный административный округ"
         },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [
-                37.35805920566864,
-                55.84614475898795
-            ]
-        },
-        "type": "Feature"
+        "ReleaseNumber": 2,
+        "DatasetId": 1796
     },
-    {
-        "properties": {
-            "DatasetId": 1796,
-            "RowId": "57d2a5ce-55ec-47b2-bd04-002631c6eded",
-            "ReleaseNumber": 2,
-            "VersionNumber": 2,
-            "Attributes": {
-                "AdmArea": "Северо-Западный административный округ",
-                "global_id": 20684125,
-                "SeatsCount": 0,
-                "Address": "Пятницкое шоссе, дом 18",
-                "District": "район Митино",
-                "IsNetObject": "нет",
-                "SocialPrivileges": "нет",
-                "PublicPhone": [
-                    {
-                        "PublicPhone": "(495) 794-45-50"
-                    }
-                ],
-                "Name": "Соки",
-                "OperatingCompany": null
-            }
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [
-                37.38364199965832,
-                55.84432399993839
-            ]
-        },
-        "type": "Feature"
-    },
-    {
-        "properties": {
-            "DatasetId": 1796,
-            "RowId": "9663189a-8d47-45c0-a879-eed16996fda2",
-            "ReleaseNumber": 2,
-            "VersionNumber": 2,
-            "Attributes": {
-                "AdmArea": "Северо-Западный административный округ",
-                "global_id": 20711360,
-                "SeatsCount": 0,
-                "Address": "Пятницкое шоссе, дом 18",
-                "District": "район Митино",
-                "IsNetObject": "нет",
-                "SocialPrivileges": "нет",
-                "PublicPhone": [
-                    {
-                        "PublicPhone": "(495) 794-45-50"
-                    }
-                ],
-                "Name": "Фреш-бар",
-                "OperatingCompany": null
-            }
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [
-                37.38364199965832,
-                55.84432399993839
-            ]
-        },
-        "type": "Feature"
-    },
-    {
-        "properties": {
-            "DatasetId": 1796,
-            "RowId": "a3156c38-2b15-4088-98c7-d9ce24075827",
-            "ReleaseNumber": 2,
-            "VersionNumber": 2,
-            "Attributes": {
-                "AdmArea": "Северо-Восточный административный округ",
-                "global_id": 272459485,
-                "SeatsCount": 0,
-                "Address": "проезд Дежнёва, дом 1",
-                "District": "район Южное Медведково",
-                "IsNetObject": "нет",
-                "SocialPrivileges": "нет",
-                "PublicPhone": [
-                    {
-                        "PublicPhone": "нет телефона"
-                    }
-                ],
-                "Name": "Бар в Деловом центре Яуза",
-                "OperatingCompany": null
-            }
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [
-                37.649759000274265,
-                55.871183000126486
-            ]
-        },
-        "type": "Feature"
+    "geometry": {
+        "coordinates": [
+            37.35805920566864,
+            55.84614475898795
+        ],
+        "type": "Point"
     }
-]
+}
 --------------------------------------------------------------------------------
 Введите широту Вашего месторасположения:
 55.644079
 Введите долготу Вашего месторасположения:
 37.497403
 
-Самые близкие бары:
-[
-    {
-        "properties": {
-            "DatasetId": 1796,
-            "RowId": "af3820bd-14ca-4a68-870d-a3c743e28819",
-            "ReleaseNumber": 2,
-            "VersionNumber": 2,
-            "Attributes": {
-                "AdmArea": "Юго-Восточный административный округ",
-                "global_id": 281494732,
-                "SeatsCount": 16,
-                "Address": "проспект Защитников Москвы, дом 8",
-                "District": "район Некрасовка",
-                "IsNetObject": "нет",
-                "SocialPrivileges": "нет",
-                "PublicPhone": [
-                    {
-                        "PublicPhone": "(977) 511-73-23"
-                    }
-                ],
-                "Name": "Таверна",
-                "OperatingCompany": null
-            }
+Самый близкий бар:
+{
+    "type": "Feature",
+    "properties": {
+        "RowId": "af3820bd-14ca-4a68-870d-a3c743e28819",
+        "VersionNumber": 2,
+        "Attributes": {
+            "global_id": 281494732,
+            "Name": "Таверна",
+            "IsNetObject": "нет",
+            "Address": "проспект Защитников Москвы, дом 8",
+            "District": "район Некрасовка",
+            "SocialPrivileges": "нет",
+            "OperatingCompany": null,
+            "SeatsCount": 16,
+            "PublicPhone": [
+                {
+                    "PublicPhone": "(977) 511-73-23"
+                }
+            ],
+            "AdmArea": "Юго-Восточный административный округ"
         },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [
-                37.92096900029184,
-                55.69988800002597
-            ]
-        },
-        "type": "Feature"
+        "ReleaseNumber": 2,
+        "DatasetId": 1796
+    },
+    "geometry": {
+        "coordinates": [
+            37.92096900029184,
+            55.69988800002597
+        ],
+        "type": "Point"
     }
-]
-
+}
 ```
 
 Запуск на Windows происходит аналогично.
