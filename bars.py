@@ -8,34 +8,35 @@ def load_data(filepath):
         return json.load(file)
 
 
-function_dict_sorted_by = {
-    'seatscount':
-        (lambda x: x['properties']['Attributes']['SeatsCount']),
-    'distance':
-        (lambda x: sqrt((latitude - x['geometry']['coordinates'][0]) ** 2 +
-                        (longitude - x['geometry']['coordinates'][1]) ** 2))}
-
-
 def get_bars_sorted_by(input_file, sorted_by, reverse):
     bars_sorted_by = sorted(
         input_file['features'], key=sorted_by, reverse=reverse)
-
     return json.dumps(bars_sorted_by[0], indent=4, ensure_ascii=False)
 
 
 def get_biggest_bar(input_file):
-    return get_bars_sorted_by(input_file,
-                              function_dict_sorted_by['seatscount'], True)
+    biggest_bar = max(
+        input_file['features'],
+        key=lambda x: x['properties']['Attributes']['SeatsCount'])
+
+    return json.dumps(biggest_bar, ensure_ascii=False, indent=4)
 
 
 def get_smallest_bar(input_file):
-    return get_bars_sorted_by(input_file,
-                              function_dict_sorted_by['seatscount'], False)
+    smallest_bar = min(
+        input_file['features'],
+        key=lambda x: x['properties']['Attributes']['SeatsCount'])
+
+    return json.dumps(smallest_bar, ensure_ascii=False, indent=4)
 
 
 def get_closest_bar(input_file, longitude, latitude):
-    return get_bars_sorted_by(input_file,
-                              function_dict_sorted_by['distance'], False)
+    closest_bar = min(
+        input_file['features'],
+        key=lambda x: sqrt((latitude - x['geometry']['coordinates'][0]) ** 2 +
+                           (longitude - x['geometry']['coordinates'][1]) ** 2))
+
+    return json.dumps(closest_bar, ensure_ascii=False, indent=4)
 
 
 if __name__ == '__main__':
