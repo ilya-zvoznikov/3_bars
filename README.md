@@ -18,114 +18,21 @@
 Запуск на Linux:
 
 ```bash
-
 $ python bars.py bars.json  # possibly requires call of python3 executive instead of just python
 Самый большой бар:
-{
-    "type": "Feature",
-    "properties": {
-        "RowId": "fbe6c340-4707-4d74-b7ca-2b84a23bf3a8",
-        "VersionNumber": 2,
-        "Attributes": {
-            "global_id": 169375059,
-            "Name": "Спорт бар «Красная машина»",
-            "IsNetObject": "нет",
-            "Address": "Автозаводская улица, дом 23, строение 1",
-            "District": "Даниловский район",
-            "SocialPrivileges": "нет",
-            "OperatingCompany": null,
-            "SeatsCount": 450,
-            "PublicPhone": [
-                {
-                    "PublicPhone": "(905) 795-15-84"
-                }
-            ],
-            "AdmArea": "Южный административный округ"
-        },
-        "ReleaseNumber": 2,
-        "DatasetId": 1796
-    },
-    "geometry": {
-        "coordinates": [
-            37.638228501070095,
-            55.70111462948684
-        ],
-        "type": "Point"
-    }
-}
---------------------------------------------------------------------------------
+Спорт бар «Красная машина»
+--------------------------------------------------
 Самый маленький бар:
-{
-    "type": "Feature",
-    "properties": {
-        "RowId": "17adc22c-5c41-4e4b-872f-815b521f2b53",
-        "VersionNumber": 2,
-        "Attributes": {
-            "global_id": 20675518,
-            "Name": "БАР. СОКИ",
-            "IsNetObject": "нет",
-            "Address": "Дубравная улица, дом 34/29",
-            "District": "район Митино",
-            "SocialPrivileges": "нет",
-            "OperatingCompany": null,
-            "SeatsCount": 0,
-            "PublicPhone": [
-                {
-                    "PublicPhone": "(495) 258-94-19"
-                }
-            ],
-            "AdmArea": "Северо-Западный административный округ"
-        },
-        "ReleaseNumber": 2,
-        "DatasetId": 1796
-    },
-    "geometry": {
-        "coordinates": [
-            37.35805920566864,
-            55.84614475898795
-        ],
-        "type": "Point"
-    }
-}
---------------------------------------------------------------------------------
+БАР. СОКИ
+--------------------------------------------------
 Введите широту Вашего месторасположения:
 55.644079
 Введите долготу Вашего месторасположения:
 37.497403
 
 Самый близкий бар:
-{
-    "type": "Feature",
-    "properties": {
-        "RowId": "af3820bd-14ca-4a68-870d-a3c743e28819",
-        "VersionNumber": 2,
-        "Attributes": {
-            "global_id": 281494732,
-            "Name": "Таверна",
-            "IsNetObject": "нет",
-            "Address": "проспект Защитников Москвы, дом 8",
-            "District": "район Некрасовка",
-            "SocialPrivileges": "нет",
-            "OperatingCompany": null,
-            "SeatsCount": 16,
-            "PublicPhone": [
-                {
-                    "PublicPhone": "(977) 511-73-23"
-                }
-            ],
-            "AdmArea": "Юго-Восточный административный округ"
-        },
-        "ReleaseNumber": 2,
-        "DatasetId": 1796
-    },
-    "geometry": {
-        "coordinates": [
-            37.92096900029184,
-            55.69988800002597
-        ],
-        "type": "Point"
-    }
-}
+Таверна 
+
 ```
 
 Запуск на Windows происходит аналогично.

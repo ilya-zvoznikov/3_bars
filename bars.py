@@ -45,8 +45,6 @@ if __name__ == '__main__':
         filepath = sys.argv[1] if len(sys.argv) > 1 else ''
         bars_list = load_data(filepath)['features']
 
-        print(type(bars_list))
-
         print('Самый большой бар:')
         print(get_biggest_bar(bars_list))
         print('-' * 50)
