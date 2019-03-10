@@ -1,72 +1,69 @@
 import json
 import sys
+import os
 from math import sqrt
 
 
 def load_data(filepath):
+    if not os.path.exists(filepath):
+        raise FileNotFoundError
     with open(filepath, 'r') as file:
         return json.load(file)
 
 
-def get_bars_sorted_by(input_file, sorted_by, reverse):
-    bars_sorted_by = sorted(
-        input_file['features'], key=sorted_by, reverse=reverse)
-    return json.dumps(bars_sorted_by[0], indent=4, ensure_ascii=False)
+def format_out(bar_dict):
+    return bar_dict['properties']['Attributes']['Name']
 
 
-def get_biggest_bar(input_file):
+def get_biggest_bar(bars_list):
     biggest_bar = max(
-        input_file['features'],
+        bars_list,
         key=lambda x: x['properties']['Attributes']['SeatsCount'])
 
-    return json.dumps(biggest_bar, ensure_ascii=False, indent=4)
+    return format_out(biggest_bar)
 
 
-def get_smallest_bar(input_file):
+def get_smallest_bar(bars_list):
     smallest_bar = min(
-        input_file['features'],
+        bars_list,
         key=lambda x: x['properties']['Attributes']['SeatsCount'])
 
-    return json.dumps(smallest_bar, ensure_ascii=False, indent=4)
+    return format_out(smallest_bar)
 
 
-def get_closest_bar(input_file, longitude, latitude):
+def get_closest_bar(bars_list, longitude, latitude):
     closest_bar = min(
-        input_file['features'],
+        bars_list,
         key=lambda x: sqrt((latitude - x['geometry']['coordinates'][0]) ** 2 +
                            (longitude - x['geometry']['coordinates'][1]) ** 2))
 
-    return json.dumps(closest_bar, ensure_ascii=False, indent=4)
+    return format_out(closest_bar)
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        filepath = sys.argv[1]
-    else:
-        filepath = 'bars.json'
+    try:
+        filepath = sys.argv[1] if len(sys.argv) > 1 else ''
+        bars_list = load_data(filepath)['features']
 
-    bars_json_file = load_data(filepath)
+        print(type(bars_list))
 
-    print('Самый большой бар:')
-    print(get_biggest_bar(bars_json_file))
-    print('-' * 80)
+        print('Самый большой бар:')
+        print(get_biggest_bar(bars_list))
+        print('-' * 50)
 
-    print('Самый маленький бар:')
-    print(get_smallest_bar(bars_json_file))
-    print('-' * 80)
+        print('Самый маленький бар:')
+        print(get_smallest_bar(bars_list))
+        print('-' * 50)
 
-    while True:
-        try:
-            latitude = float(
-                input('Введите широту Вашего месторасположения:\n'))
-            longitude = float(
-                input('Введите долготу Вашего месторасположения:\n'))
-            break
-        except ValueError:
-            print('Введено некорректное значение! Попробуйте еще раз!')
+        latitude = float(input('Введите широту Вашего месторасположения:\n'))
+        longitude = float(input('Введите долготу Вашего месторасположения:\n'))
 
-    print()
-    print('Самый близкий бар:')
-    print(get_closest_bar(bars_json_file,
-                          longitude=longitude,
-                          latitude=latitude))
+        print()
+        print('Самый близкий бар:')
+        print(get_closest_bar(bars_list,
+                              longitude=longitude,
+                              latitude=latitude), '\n')
+    except FileNotFoundError:
+        print('Файл не найден')
+    except ValueError:
+        print('Введено некорректное значение')
