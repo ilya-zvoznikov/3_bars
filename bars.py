@@ -5,15 +5,8 @@ from math import sqrt
 
 
 def load_data(filepath):
-    try:
-        with open(filepath, 'r') as file:
-            return json.load(file)
-    except FileNotFoundError:
-        print('Файл не найден')
-        sys.exit()
-    except json.decoder.JSONDecodeError:
-        print('Данные не в формате JSON')
-        sys.exit()
+    with open(filepath, 'r') as file:
+        return json.load(file)
 
 
 def print_bar(message, bar_dict):
@@ -49,7 +42,14 @@ def get_closest_bar(bars_list, latitude, longitude):
 
 if __name__ == '__main__':
     filepath = sys.argv[1] if len(sys.argv) > 1 else ''
-    bars_list = load_data(filepath)['features']
+    try:
+        bars_list = load_data(filepath)['features']
+    except FileNotFoundError:
+        print('Файл не найден')
+        sys.exit()
+    except json.decoder.JSONDecodeError:
+        print('Данные не в формате JSON')
+        sys.exit()
 
     try:
         latitude = float(input('Введите широту Вашего местоположения:\n'))
