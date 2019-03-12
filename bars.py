@@ -39,27 +39,24 @@ def get_closest_bar(bars_list, latitude, longitude):
     return closest_bar
 
 
-if len(sys.argv) > 1:
-    filepath = sys.argv[1]
-else:
-    print('Не указан путь к файлу')
-    exit()
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        filepath = sys.argv[1]
+    else:
+        sys.exit('Не указан путь к файлу')
 
-try:
-    bars_list = load_data(filepath)['features']
-    latitude = float(input('Введите широту Вашего местоположения:\n'))
-    longitude = float(input('Введите долготу Вашего местоположения:\n'))
-except json.decoder.JSONDecodeError:
-    print('Данные не в формате JSON')
-    exit()
-except ValueError:
-    print('Введено некорректное значение')
-    exit()
-except FileNotFoundError:
-    print('Файл не найден')
-    exit()
+    try:
+        bars_list = load_data(filepath)['features']
+        latitude = float(input('Введите широту Вашего местоположения:\n'))
+        longitude = float(input('Введите долготу Вашего местоположения:\n'))
+    except json.decoder.JSONDecodeError:
+        sys.exit('Данные не в формате JSON')
+    except ValueError:
+        sys.exit('Введено некорректное значение')
+    except FileNotFoundError:
+        sys.exit('Файл не найден')
 
-print_bar('Самый большой бар:', get_biggest_bar(bars_list))
-print_bar('Самый маленький бар:', get_smallest_bar(bars_list))
-print_bar('Самый близкий бар:',
-          get_closest_bar(bars_list, latitude, longitude))
+    print_bar('Самый большой бар:', get_biggest_bar(bars_list))
+    print_bar('Самый маленький бар:', get_smallest_bar(bars_list))
+    print_bar('Самый близкий бар:',
+              get_closest_bar(bars_list, latitude, longitude))
