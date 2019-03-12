@@ -4,8 +4,11 @@ from math import sqrt
 
 
 def load_data(filepath):
-    with open(filepath, 'r') as file:
-        return json.load(file)
+    try:
+        with open(filepath, 'r') as file:
+            return json.load(file)
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return None
 
 
 def print_bar(message, bar_dict):
@@ -45,16 +48,16 @@ if __name__ == '__main__':
     else:
         sys.exit('Не указан путь к файлу')
 
-    try:
+    if not load_data(filepath):
+        sys.exit('Файл не найден или данные не в формате JSON')
+    else:
         bars_list = load_data(filepath)['features']
+
+    try:
         latitude = float(input('Введите широту Вашего местоположения:\n'))
         longitude = float(input('Введите долготу Вашего местоположения:\n'))
-    except json.decoder.JSONDecodeError:
-        sys.exit('Данные не в формате JSON')
     except ValueError:
         sys.exit('Введено некорректное значение')
-    except FileNotFoundError:
-        sys.exit('Файл не найден')
 
     print_bar('Самый большой бар:', get_biggest_bar(bars_list))
     print_bar('Самый маленький бар:', get_smallest_bar(bars_list))
